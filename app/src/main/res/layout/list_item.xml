@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="60sp"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="wat" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/adamina"
+        android:text="watwat"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/example"
+        app:layout_constraintTop_toBottomOf="@+id/example" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/adamina"
+        android:text="Sep 3 2008"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/example"
+        app:layout_constraintTop_toBottomOf="@+id/example" />
+
+    <TextView
+        android:id="@+id/definition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/adamina"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/word"
+        app:layout_constraintTop_toBottomOf="@+id/word"
+        tools:text="The only proper response to something that make absolutely no sense." />
+
+    <TextView
+        android:id="@+id/example"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/adamina"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
+        android:text=" 1:If all the animals on the equator were capable of flatter, \n were capable flattery"
+        app:layout_constraintEnd_toEndOf="@+id/definition"
+        app:layout_constraintStart_toStartOf="@+id/definition"
+        app:layout_constraintTop_toBottomOf="@+id/definition" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/circle_background"
+        android:padding="10dp"
+        android:src="@drawable/ic_baseline_share_48"
+        app:layout_constraintBottom_toBottomOf="@+id/word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/word" />
+
+    <TextView
+        android:id="@+id/thumbs_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/up_thumb_backgound"
+        android:drawableLeft="@drawable/ic_baseline_thumb_up_24"
+        android:gravity="center"
+        android:padding="10sp"
+        android:text="3700"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/author"
+        app:layout_constraintTop_toBottomOf="@+id/author" />
+
+    <TextView
+        android:id="@+id/thumbs_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/down_thumb_background"
+        android:drawableLeft="@drawable/ic_baseline_thumb_down_24"
+        android:gravity="center"
+        android:text="427"
+        android:padding="10sp"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/thumbs_up"
+        app:layout_constraintStart_toEndOf="@+id/thumbs_up"
+        app:layout_constraintTop_toTopOf="@+id/thumbs_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
