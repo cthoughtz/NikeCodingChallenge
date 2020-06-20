@@ -2,7 +2,6 @@ package com.example.nikecodingchallenge.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,11 +16,18 @@ import com.example.nikecodingchallenge.adapter.WordsListAdapter
 import com.example.nikecodingchallenge.model.UrbanDictionaryResponse
 import com.example.nikecodingchallenge.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: AppViewModel
     val TAG = javaClass.simpleName
+    var wordList = ArrayList<UrbanDictionaryResponse.Items>()
+    lateinit var wordListAdapter: WordsListAdapter
+    var isDecending= false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView(it: UrbanDictionaryResponse) {
 
-        val wordList = ArrayList<UrbanDictionaryResponse.Items>()
-        val wordListAdapter = WordsListAdapter(wordList)
+         wordListAdapter = WordsListAdapter(wordList)
 
         //Add to List
         addDataArrayList(wordList,it,wordListAdapter)
@@ -101,6 +106,11 @@ class MainActivity : AppCompatActivity() {
         var thumbsDown = ""
         var date = ""
         var size = it.list!!.size
+
+        // Clears arrays list for the second search
+        if (wordList != null){
+            wordList.clear()
+        }
 
         // Loop Through data
         for (i in 0 until size) {
@@ -128,6 +138,7 @@ class MainActivity : AppCompatActivity() {
 
         // Hide Progress bar after Recyclerview is updated
         progress_bar.visibility = View.INVISIBLE
+
     }
 
     private fun formattedDate(date: String): String {
@@ -156,12 +167,54 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem)= when(item.itemId) {
 
         R.id.sort -> {
-            //Todo - Sort Items based on thumbs
+            if (this::wordListAdapter.isInitialized)
+            sortList(isDecending,wordList,wordListAdapter)
+            else
+                Toast.makeText(this,"Please Search an Item, Thanks",Toast.LENGTH_LONG).show()
             true
         } else -> {
              super.onOptionsItemSelected(item)
         }
 
+    }
+
+    private fun sortList(
+        decending: Boolean,
+        wordList: java.util.ArrayList<UrbanDictionaryResponse.Items>,
+        wordListAdapter: WordsListAdapter
+    ) {
+
+        if (wordList != null) {
+
+            if (decending == false){
+
+
+                Collections.sort(wordList, object: Comparator<UrbanDictionaryResponse.Items>{
+                    override fun compare(
+                        o1: UrbanDictionaryResponse.Items?,
+                        o2: UrbanDictionaryResponse.Items?
+                    ): Int {
+                        return o1!!.thumbsDown!!.compareTo(o2!!.thumbsUp!!)
+                    }
+                })
+
+                isDecending = true
+            } else {
+
+                Collections.sort(wordList, object: Comparator<UrbanDictionaryResponse.Items>{
+                    override fun compare(
+                        o1: UrbanDictionaryResponse.Items?,
+                        o2: UrbanDictionaryResponse.Items?
+                    ): Int {
+                        return o2!!.thumbsUp!!.compareTo(o1!!.thumbsDown!!)
+                    }
+                })
+
+                isDecending = false
+            }
+
+            wordListAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun observeBackEnd() {
