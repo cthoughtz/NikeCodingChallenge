@@ -1,11 +1,15 @@
 package com.example.nikecodingchallenge.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.text.HtmlCompat
+import androidx.core.content.ContextCompat.startActivity
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikecodingchallenge.R
 import com.example.nikecodingchallenge.model.UrbanDictionaryResponse
@@ -13,7 +17,9 @@ import com.example.nikecodingchallenge.model.UrbanDictionaryResponse
 class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
     RecyclerView.Adapter<WordsListAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View,context: Context): RecyclerView.ViewHolder(itemView){
+
+        val ctx = context
 
         val word = itemView.findViewById<TextView>(R.id.word)
         val definition = itemView.findViewById<TextView>(R.id.definition)
@@ -22,6 +28,7 @@ class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
         val thumbsUp = itemView.findViewById<TextView>(R.id.thumbs_up)
         val thumbsDown = itemView.findViewById<TextView>(R.id.thumbs_down)
         val publishDate = itemView.findViewById<TextView>(R.id.date)
+        val shareButton = itemView.findViewById<ImageButton>(R.id.share_button)
 
         fun bindItem(listItems: UrbanDictionaryResponse.Items){
 
@@ -32,6 +39,20 @@ class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
             thumbsUp.text = listItems.thumbsUp.toString()
             thumbsDown.text = listItems.thumbsDown.toString()
             publishDate.text = listItems.writtenOn.toString()
+
+            shareButton.setOnClickListener{
+
+
+                var defWord = listItems.word.toString()
+                var def = listItems.definition.toString()
+
+                var wordAndDef = "$defWord \n $def"
+
+                var dataIntent = Intent(Intent.ACTION_SEND)
+                dataIntent.setType("text/plain")
+                dataIntent.putExtra(Intent.EXTRA_TEXT,wordAndDef)
+                ctx.startActivity(Intent.createChooser(dataIntent,"Definition"))
+            }
         }
 
         private fun convertRawData(toString: String): String {
@@ -43,7 +64,7 @@ class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
-        return ViewHolder(v)
+        return ViewHolder(v,v.context)
     }
 
     override fun getItemCount() = listItems.size
