@@ -41,9 +41,8 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/adamina"
         android:text="Sep 3 2008"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/word"
-        app:layout_constraintStart_toStartOf="@+id/word"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/definition"
         app:layout_constraintTop_toBottomOf="@+id/word" />
 
     <TextView

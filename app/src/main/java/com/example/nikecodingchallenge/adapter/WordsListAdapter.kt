@@ -42,7 +42,6 @@ class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
 
             shareButton.setOnClickListener{
 
-
                 var defWord = listItems.word.toString()
                 var def = listItems.definition.toString()
 

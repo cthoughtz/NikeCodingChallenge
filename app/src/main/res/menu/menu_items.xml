@@ -5,7 +5,6 @@
     <item android:id="@+id/sort"
         android:title="Sort"
         android:icon="@drawable/up_down"
-        app:showAsAction="always"
-        android:orderInCategory="200" />
+        app:showAsAction="always" />
 
 </menu>

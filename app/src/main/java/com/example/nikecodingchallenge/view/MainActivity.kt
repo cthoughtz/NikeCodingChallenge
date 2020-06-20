@@ -1,11 +1,14 @@
 package com.example.nikecodingchallenge.view
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -138,6 +141,9 @@ class MainActivity : AppCompatActivity() {
 
         // Hide Progress bar after Recyclerview is updated
         progress_bar.visibility = View.INVISIBLE
+
+        //Hide Keyboard
+        search_view.clearFocus()
 
     }
 
