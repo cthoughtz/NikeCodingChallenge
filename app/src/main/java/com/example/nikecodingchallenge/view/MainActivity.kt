@@ -2,11 +2,13 @@ package com.example.nikecodingchallenge.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -166,5 +168,6 @@ class MainActivity : AppCompatActivity() {
             //Set up recyclerView
             setUpRecyclerView(it)
         })
+
     }
 }
