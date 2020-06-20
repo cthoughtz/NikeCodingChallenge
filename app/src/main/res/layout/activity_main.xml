@@ -45,14 +45,25 @@
     </LinearLayout>
 
     <ProgressBar
+        android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="20dp"
         android:indeterminate="true"
+        android:visibility="invisible"
         android:indeterminateTint="@color/colorOffYellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar_linear_layout"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar_linear_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

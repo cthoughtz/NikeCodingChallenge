@@ -35,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/example" />
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/adamina"
@@ -52,7 +53,7 @@
         android:textSize="25sp"
         android:textColor="@android:color/black"
         android:fontFamily="@font/adamina"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintEnd_toEndOf="@+id/share_button"
         app:layout_constraintStart_toStartOf="@+id/word"
         app:layout_constraintTop_toBottomOf="@+id/word"
         tools:text="The only proper response to something that make absolutely no sense." />
@@ -71,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/definition" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="40dp"

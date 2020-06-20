@@ -24,6 +24,7 @@ class AppViewModel: ViewModel() {
                 is Result.Success<*> ->{
 
                     searchResultSuccess.postValue(searchItem.data as UrbanDictionaryResponse)
+
                 }
 
                 is Result.Error<*> ->{
@@ -34,3 +35,4 @@ class AppViewModel: ViewModel() {
         }
     }
 }
+
