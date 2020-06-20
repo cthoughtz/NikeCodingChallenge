@@ -125,6 +125,9 @@ class MainActivity : AppCompatActivity() {
 
         // Notify Adapter of change
         wordListAdapter!!.notifyDataSetChanged()
+
+        // Hide Progress bar after Recyclerview is updated
+        progress_bar.visibility = View.INVISIBLE
     }
 
     private fun formattedDate(date: String): String {

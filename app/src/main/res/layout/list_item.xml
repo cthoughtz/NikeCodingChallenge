@@ -79,10 +79,10 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/circle_background"
         android:padding="10dp"
-        android:src="@drawable/ic_baseline_share_48"
-        app:layout_constraintBottom_toBottomOf="@+id/word"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintBottom_toBottomOf="@+id/thumbs_down"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/word" />
+        app:layout_constraintTop_toTopOf="@+id/thumbs_down" />
 
     <TextView
         android:id="@+id/thumbs_up"
