@@ -130,10 +130,10 @@ class MainActivity : AppCompatActivity() {
     private fun formattedDate(date: String): String {
 
         // Get the first 10 digits of string
-        var trimmedDate = date.substring(0,9)
+        var trimmedDate = date.split("T")
 
         // Split string based on dash(-)
-        var splitDate = trimmedDate.split("-")
+        var splitDate = trimmedDate[0].split("-")
 
         // Create Final Date
         var finalDate = "${splitDate[1]}/${splitDate[2]}/${splitDate[0]}"

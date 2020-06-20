@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/word"
@@ -38,24 +38,25 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/adamina"
         android:text="Sep 3 2008"
         android:textSize="20sp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/example"
-        app:layout_constraintTop_toBottomOf="@+id/example" />
+        app:layout_constraintEnd_toEndOf="@+id/word"
+        app:layout_constraintStart_toStartOf="@+id/word"
+        app:layout_constraintTop_toBottomOf="@+id/word" />
 
     <TextView
         android:id="@+id/definition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="25sp"
-        android:textColor="@android:color/black"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/adamina"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/share_button"
         app:layout_constraintStart_toStartOf="@+id/word"
-        app:layout_constraintTop_toBottomOf="@+id/word"
+        app:layout_constraintTop_toBottomOf="@+id/date"
         tools:text="The only proper response to something that make absolutely no sense." />
 
     <TextView
@@ -64,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/adamina"
-        android:textSize="25dp"
+        android:textSize="15dp"
         android:textColor="@android:color/black"
         android:text=" 1:If all the animals on the equator were capable of flatter, \n were capable flattery"
         app:layout_constraintEnd_toEndOf="@+id/definition"
@@ -87,14 +88,16 @@
         android:id="@+id/thumbs_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/up_thumb_backgound"
         android:drawableLeft="@drawable/ic_baseline_thumb_up_24"
         android:gravity="center"
         android:padding="10sp"
         android:text="3700"
-        android:layout_marginTop="30dp"
         android:textColor="@android:color/black"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/author"
         app:layout_constraintTop_toBottomOf="@+id/author" />
 

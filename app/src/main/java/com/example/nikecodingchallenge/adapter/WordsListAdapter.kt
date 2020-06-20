@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikecodingchallenge.R
 import com.example.nikecodingchallenge.model.UrbanDictionaryResponse
@@ -25,12 +26,17 @@ class WordsListAdapter(val listItems: ArrayList<UrbanDictionaryResponse.Items>):
         fun bindItem(listItems: UrbanDictionaryResponse.Items){
 
             word.text = listItems.word.toString()
-            definition.text = listItems.definition.toString()
-            examples.text = listItems.example.toString()
+            definition.text = convertRawData(listItems.definition.toString())
+            examples.text = convertRawData(listItems.example.toString())
             author.text = listItems.author.toString()
             thumbsUp.text = listItems.thumbsUp.toString()
             thumbsDown.text = listItems.thumbsDown.toString()
             publishDate.text = listItems.writtenOn.toString()
+        }
+
+        private fun convertRawData(toString: String): String {
+
+            return toString.replace("[","").replace("]","")
         }
     }
 
