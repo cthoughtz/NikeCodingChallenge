@@ -37,17 +37,11 @@ class MainActivity : AppCompatActivity() {
         // Set up toolbar
         setSupportActionBar(toolbar)
 
-
-        // set ViewModel
-     //   viewModel = ViewModelProviders.of(this).get(AppViewModel::class.java)
-
         // Observe backend for any changes
         observeBackEnd()
 
-
         //Search Query
         searchQuery()
-
     }
 
     private fun searchQuery() {
