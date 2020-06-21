@@ -1,14 +1,11 @@
 package com.example.nikecodingchallenge.view
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -19,13 +16,14 @@ import com.example.nikecodingchallenge.adapter.WordsListAdapter
 import com.example.nikecodingchallenge.model.UrbanDictionaryResponse
 import com.example.nikecodingchallenge.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: AppViewModel
+    private val viewModel: AppViewModel by viewModel()
     val TAG = javaClass.simpleName
     var wordList = ArrayList<UrbanDictionaryResponse.Items>()
     lateinit var wordListAdapter: WordsListAdapter
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // set ViewModel
-        viewModel = ViewModelProviders.of(this).get(AppViewModel::class.java)
+     //   viewModel = ViewModelProviders.of(this).get(AppViewModel::class.java)
 
         // Observe backend for any changes
         observeBackEnd()
@@ -225,7 +223,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeBackEnd() {
 
-        viewModel.searchResultSuccess.observe(this, Observer {
+        viewModel.searchResult.observe(this, Observer {
 
             //Set up recyclerView
             setUpRecyclerView(it)

@@ -9,15 +9,15 @@ import kotlinx.coroutines.launch
 
 class AppViewModel: ViewModel() {
 
-    var searchResultSuccess = MutableLiveData<UrbanDictionaryResponse>()
-    var searchResultFailure = MutableLiveData<UrbanDictionaryResponse>()
+    var searchResult = MutableLiveData<UrbanDictionaryResponse>()
+
 
     fun getSearchResult(searchTerm: String){
 
         viewModelScope.launch {
 
             val searchItem = PostApi.postApi.searchTerm(searchTerm).body()
-            searchResultSuccess.postValue(searchItem)
+            searchResult.postValue(searchItem)
 
         }
     }
