@@ -11,7 +11,6 @@ class AppViewModel: ViewModel() {
 
     var searchResult = MutableLiveData<UrbanDictionaryResponse>()
 
-
     fun getSearchResult(searchTerm: String){
 
         viewModelScope.launch {

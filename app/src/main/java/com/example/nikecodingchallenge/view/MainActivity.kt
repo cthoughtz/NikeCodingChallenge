@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         var thumbsUp = ""
         var thumbsDown = ""
         var date = ""
-        var size = it.list!!.size
+        var size = it.list?.size
 
         // Clears arrays list for the second search
         if (wordList != null){
@@ -108,15 +108,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Loop Through data
+        if(size != null)
         for (i in 0 until size) {
 
-            word = it.list.get(i).word.toString()
-            definition = it.list.get(i).definition.toString()
-            example = it.list.get(i).example.toString()
-            author = it.list.get(i).author.toString()
-            thumbsUp = it.list.get(i).thumbsUp.toString()
-            thumbsDown = it.list.get(i).thumbsDown.toString()
-            date = it.list.get(i).writtenOn.toString()
+            word = it.list?.get(i)?.word.toString()
+            definition = it.list?.get(i)?.definition.toString()
+            example = it.list?.get(i)?.example.toString()
+            author = it.list?.get(i)?.author.toString()
+            thumbsUp = it.list?.get(i)?.thumbsUp.toString()
+            thumbsDown = it.list?.get(i)?.thumbsDown.toString()
+            date = it.list?.get(i)?.writtenOn.toString()
 
             // Format Date
             var formatted = formattedDate(date)
@@ -129,12 +130,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Notify Adapter of change
-        wordListAdapter!!.notifyDataSetChanged()
+        wordListAdapter?.let {
+            it.notifyDataSetChanged()
+        }
 
-        // Hide Progress bar after Recyclerview is updated
         progress_bar.visibility = View.INVISIBLE
-
-        //Hide Keyboard
         search_view.clearFocus()
 
     }
@@ -192,7 +192,8 @@ class MainActivity : AppCompatActivity() {
                         o1: UrbanDictionaryResponse.Items?,
                         o2: UrbanDictionaryResponse.Items?
                     ): Int {
-                        return o1!!.thumbsDown!!.compareTo(o2!!.thumbsUp!!)
+
+                        return o2?.thumbsUp?.let { o1?.thumbsDown?.compareTo(it) }!!
                     }
                 })
 
@@ -204,7 +205,7 @@ class MainActivity : AppCompatActivity() {
                         o1: UrbanDictionaryResponse.Items?,
                         o2: UrbanDictionaryResponse.Items?
                     ): Int {
-                        return o2!!.thumbsUp!!.compareTo(o1!!.thumbsDown!!)
+                        return o2?.thumbsUp?.let{o1?.thumbsDown?.compareTo(it)}!!
                     }
                 })
 
